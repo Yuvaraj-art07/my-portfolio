@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yuvaraj | Full Stack & Java Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================
+           1. CSS VARIABLES & THEMES
+           ========================================== */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1e293b;
+            --text-muted: #64748b;
+            --accent-color: #2563eb; /* Professional Blue */
+            --accent-hover: #1d4ed8;
+            --card-bg: #f8fafc;
+            --border-color: #e2e8f0;
+            --timeline-line: #cbd5e1;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a; /* Slate 900 */
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-color: #60a5fa; /* Light Blue */
+            --accent-hover: #3b82f6;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --timeline-line: #334155;
+        }
+
+        /* ==========================================
+           2. BASE STYLES
+           ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.6;
+        }
+
+        section {
+            padding: 5rem 10%2rem 10%;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 0.5rem auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* ==========================================
+           3. NAVBAR
+           ========================================== */
+        header {
+            position: sticky;
+            top: 0;
+            background: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 10%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .theme-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+
+        .theme-btn:hover {
+            background-color: var(--card-bg);
+        }
+
+        /* ==========================================
+           4. HERO SECTION
+           ========================================== */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: calc(100vh - 80px);
+            gap: 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .primary-btn {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        .primary-btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .secondary-btn {
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            background-color: transparent;
+        }
+
+        .secondary-btn:hover {
+            background-color: var(--card-bg);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .avatar-placeholder {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), #a855f7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================
+           5. ABOUT SECTION
+           ========================================== */
+        .about-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================
+           6. SKILLS SECTION (ANIMATED CARDS)
+           ========================================== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem 1rem;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        /* The Card Pop-up Animation */
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        /* ==========================================
+           7. PROJECTS SECTION
+           ========================================== */
+        .projects-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .project-img {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            min-height: 250px;
+        }
+
+        .project-info {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-info p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tech-stack span {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .proj-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .proj-link:hover {
+            color: var(--accent-color);
+        }
+
+        /* ==========================================
+           8. EDUCATION TIMELINE
+           ========================================== */
+        .timeline-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        /* Vertical Progress Line */
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            bottom: 10px;
+            width: 2px;
+            background: var(--timeline-line);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Timeline Dot Indicator */
+        .timeline-dot {
+            position: absolute;
+            left: -2rem;
+            transform: translateX(-40%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            top: 8px;
+            box-shadow: 0 0 0 4px var(--bg-color);
+        }
+
+        .timeline-date {
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ==========================================
+           9. CERTIFICATES
+           ========================================== */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cert-card {
+            display: flex;
+            gap: 1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 12px;
+            align-items: flex-start;
+        }
+
+        .cert-icon {
+            font-size: 1.5rem;
+        }
+
+        .cert-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .cert-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================
+           10. CONTACT & FOOTER
+           ========================================== */
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem 0;
+            border-top: 1px solid var(--border-color);
+            margin-top: 5rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ==========================================
+           11. RESPONSIVE DESIGN (MOBILE FIXES)
+           ========================================== */
+        @media (max-width: 768px) {
+            section { padding: 4rem 5%; }
+            .navbar { flex-direction: column; gap: 1rem; }
+            .nav-container { flex-direction: column; gap: 1rem; }
+            .hero { flex-direction: column-reverse; text-align: center; justify-content: center; gap: 2rem; }
+            .hero-cta { justify-content: center; }
+            .avatar-placeholder { width: 220px; height: 220px; font-size: 3.5rem; }
+            .project-card { grid-template-columns: 1fr; }
+            .cert-grid { grid-template-columns: 1fr; }
+            .scroll-down { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">YUVA<span>RAJ</span></div>
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">🌙</button>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>👋 Hi, I'm <span class="highlight">Yuvaraj</span></h1>
+            <div class="subtitle">Full Stack Developer | Java Developer</div>
+            <p class="tagline">"I build modern web applications and robust backend business logic."</p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn primary-btn">View Projects</a>
+                <a href="#" class="btn secondary-btn">Download CV</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="avatar-placeholder">👨‍💻</div>
+        </div>
+        <div class="scroll-down">
+            <span>Scroll Down</span>
+            <div>↓</div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-container">
+            <p>I am a motivated computer science student with a focused track record in full-stack architecture. Combining enterprise programming principles with practical application interfaces, I am eager to write maintainable code and address actual user requirements.</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">HTML</div>
+            <div class="skill-card">CSS</div>
+            <div class="skill-card">JavaScript</div>
+            <div class="skill-card">PHP</div>
+            <div class="skill-card">Java</div>
+            <div class="skill-card">MySQL</div>
+            <div class="skill-card">Git</div>
+            <div class="skill-card">GitHub</div>
+            <div class="skill-card">MERN Stack</div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Featured Project</h2>
+        <div class="projects-container">
+            <div class="project-card">
+                <div class="project-img">🗳️</div>
+                <div class="project-info">
+                    <h3>Online Voting System</h3>
+                    <p>A web application built to streamline digital polling. Implements voter authentication systems, real-time vote allocation tables, and clean administrative control flows.</p>
+                    <div class="tech-stack">
+                        <span>Java</span>
+                        <span>MySQL</span>
+                        <span>HTML/CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="proj-link">Code ↗</a>
+                        <a href="#" class="proj-link">Live Demo ↗</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2 class="section-title">Education Timeline</h2>
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2023 — 2026</div>
+                <div class="timeline-content">
+                    <h3>B.Sc. Computer Science</h3>
+                    <p>Core focus on foundational computer science concepts including OOP design patterns, Relational Databases, and Core Software Architecture.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates">
+        <h2 class="section-title">Certificates</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <div class="cert-icon">🏆</div>
+                <div class="cert-info">
+                    <h4>Java Full Stack Internship</h4>
+                    <p>Hands-on validation building enterprise-ready backend APIs and database operations.</p>
+                </div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">🏆</div>
+                <div class="cert-info">
+                    <h4>Web Development Internship</h4>
+                    <p>Focus on fluid frontend engineering pipelines and client-server integrations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-links">
+            <a href="mailto:your.email@example.com" class="contact-link">Email</a>
+            <a href="tel:+1234567890" class="contact-link">Phone</a>
+            <a href="https://linkedin.com" target="_blank" class="contact-link">LinkedIn</a>
+            <a href="https://github.com" target="_blank" class="contact-link">GitHub</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Yuvaraj. Built with care.</p>
+    </footer>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        
+        themeToggleBtn.addEventListener('click', () => {
+            const isDark = document.body.hasAttribute('data-theme');
+            if (isDark) {
+                document.body.removeAttribute('data-theme');
+                themeToggleBtn.textContent = '🌙';
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                themeToggleBtn.textContent = '☀️';
+            }
+        });
+    </script>
+</body>
+</html>
