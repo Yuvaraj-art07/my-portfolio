@@ -473,35 +473,51 @@
         /* ==========================================
            10. CONTACT & FOOTER
            ========================================== */
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            flex-wrap: wrap;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-link {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: color 0.2s;
-        }
-
-        .contact-link:hover {
-            color: var(--accent-color);
-        }
-
-        footer {
-            text-align: center;
-            padding: 2.5rem 0;
-            border-top: 1px solid var(--border-color);
-            margin-top: 5rem;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
+                    .contact-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+                gap: 1.5rem;
+                max-width: 700px;
+                margin: 0 auto;
+            }
+            
+            .contact-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background: var(--card-bg);
+                border: 1px solid var(--border-color);
+                padding: 1.5rem 1rem;
+                border-radius: 12px;
+                text-decoration: none;
+                color: var(--text-color);
+                font-weight: 600;
+                transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s;
+            }
+            
+            .contact-card:hover {
+                transform: translateY(-5px);
+                border-color: var(--accent-color);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            }
+            
+            .contact-icon {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .contact-label {
+                font-size: 1rem;
+            }
+            
+            /* Fix for mobile screens */
+            @media (max-width: 480px) {
+                .contact-grid {
+                    grid-template-columns: 1fr 1fr; /* 2 columns on small phones */
+                    gap: 1rem;
+                }
+            }
 
         /* ==========================================
            11. RESPONSIVE DESIGN (MOBILE FIXES)
@@ -539,7 +555,7 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>👋 Hi, I'm <span class="highlight">Yuvaraj</span></h1>
+            <h1>👋 Hi, I'm <span class="highlight">Yuvaraj D</span></h1>
             <div class="subtitle">Full Stack Developer | Java Developer</div>
             <p class="tagline">"I build modern web applications and robust backend business logic."</p>
             <div class="hero-cta">
@@ -615,23 +631,33 @@
         </div>
     </section>
 
+    
     <section id="certificates">
         <h2 class="section-title">Certificates</h2>
         <div class="cert-grid">
-            <div class="cert-card">
-                <div class="cert-icon">🏆</div>
-                <div class="cert-info">
-                    <h4>Java Full Stack Internship</h4>
-                    <p>Hands-on validation building enterprise-ready backend APIs and database operations.</p>
+            
+            <a href="YOUR_JAVA_INTERNSHIP_LINK_HERE" target="_blank" class="cert-card-link">
+                <div class="cert-card">
+                    <div class="cert-icon">🏆</div>
+                    <div class="cert-info">
+                        <h4>Full Stack Internship</h4>
+                        <p>Hands-on validation building enterprise-ready backend APIs and database operations.</p>
+                        <span class="view-cert">Verify Certificate ↗</span>
+                    </div>
                 </div>
-            </div>
-            <div class="cert-card">
-                <div class="cert-icon">🏆</div>
-                <div class="cert-info">
-                    <h4>Web Development Internship</h4>
-                    <p>Focus on fluid frontend engineering pipelines and client-server integrations.</p>
+            </a>
+
+            <a href="https://drive.google.com/file/d/1zdMP1qQ-P9TZDdWMpZYqod_ghYm58t-a/view?usp=drive_link" target="_blank" class="cert-card-link">
+                <div class="cert-card">
+                    <div class="cert-icon">📜</div>
+                    <div class="cert-info">
+                        <h4>NPTEL Certification</h4>
+                        <p>Completed rigorous academic coursework and examination managed by elite IITs/IISc.</p>
+                        <span class="view-cert">Verify Certificate ↗</span>
+                    </div>
                 </div>
-            </div>
+            </a>
+
         </div>
     </section>
 
